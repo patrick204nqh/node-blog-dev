@@ -6,19 +6,20 @@ const blogRoutes = require('./routes/blogRoutes');
 // express app
 const app = express();
 
+const port = process.env.PORT || 3000;
 // connect to mongodb
 const dbURI =
   'mongodb+srv://patrick:patrick123456@nodetuts.ctz82.mongodb.net/note-tuts?retryWrites=true&w=majority';
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then((result) => app.listen(process.env.PORT || 3000))
+  .then((result) => app.listen(port))
   .catch((err) => console.log(err));
 
 // register view engine
 app.set('view engine', 'ejs');
 
 // middleware & static files
-app.use(express.static(__dirname + 'public'));
+app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
