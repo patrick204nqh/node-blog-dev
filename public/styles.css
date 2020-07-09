@@ -59,6 +59,15 @@ h3 {
   margin-left: 20px;
 }
 /* index styles */
+.blogs a {
+  display: block;
+  margin: 40px 0;
+  padding-left: 30px;
+  border-left: 6px solid rgb(77, 139, 209);
+}
+.blogs a:hover h3 {
+  color: rgb(77, 139, 209);
+}
 /* details styles */
 /* create styles */
 .create-blog form {
@@ -81,7 +90,7 @@ textarea {
 }
 .create-blog button {
   margin-top: 20px;
-  background: crimson;
+  background: rgb(77, 139, 209);
   color: white;
   padding: 6px;
   border: 0;

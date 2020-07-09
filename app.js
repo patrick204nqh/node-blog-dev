@@ -2,6 +2,8 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const Blog = require('./models/blog');
+const { result } = require('lodash');
+const { render } = require('ejs');
 
 // express app
 const app = express();
@@ -50,6 +52,17 @@ app.post('/blogs', (req, res) => {
     .save()
     .then((result) => {
       res.redirect('/blogs');
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+app.get('/blogs/:id', (req, res) => {
+  const id = req.params.id;
+  Blog.findById(id)
+    .then((result) => {
+      res.render('details', { blog: result, title: 'Blog Details' });
     })
     .catch((err) => {
       console.log(err);
